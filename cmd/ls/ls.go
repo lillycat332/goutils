@@ -3,12 +3,12 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
-	"log"
 	"os"
 )
 
 // ls lists files in a folder.
 // ls does NOT hide files starting with a dot, as this was never an intended behaviour in Unix.
+// usage: ls [folder]
 func main() {
 	var dir string
 
@@ -20,7 +20,8 @@ func main() {
 
 	files, err := ioutil.ReadDir(dir)
 	if err != nil {
-		log.Fatal(err)
+		fmt.Printf("ls: %s", err)
+		os.Exit(1)
 	}
 
 	for _, file := range files {

@@ -18,6 +18,8 @@ func readStream(r io.Reader) ([]byte, error) {
 	return data, nil
 }
 
+// cat con*CAT*enates files and writes the result to stdout.
+// usage: cat [file]...
 func main() {
 	var data []byte
 	var err error
