@@ -24,6 +24,10 @@ func main() {
 	}
 
 	for _, file := range files {
-		fmt.Println(file.Name())
+		if file.IsDir() {
+			fmt.Print(file.Name(), "/", "\n")
+		} else {
+			fmt.Print(file.Name(), "\n")
+		}
 	}
 }
