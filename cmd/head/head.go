@@ -18,8 +18,18 @@ func readStream(r io.Reader) ([]byte, error) {
 
 	return data, nil
 }
+func init() {
+	flag.Usage = func() {
+		fmt.Fprintf(os.Stderr, "usage: %s [flags] [file]...:\n", os.Args[0])
+
+		flag.VisitAll(func(f *flag.Flag) {
+			fmt.Fprintf(os.Stderr, "	-%s: %v (default: %s)\n", f.Name, f.Usage, f.DefValue)
+		})
+	}
+}
 
 // Head reads from a stream until EOF and returns the first n bytes of the stream.
+// Usage: head -b [10] -f [file]...
 func main() {
 	var data []byte
 	var lc = flag.Int("b", 10, "number of bytes to print")
