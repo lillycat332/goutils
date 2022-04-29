@@ -5,7 +5,8 @@ import (
 	"os"
 )
 
-// Mkdir creates a new directory with the specified name and permission bits.
+// Mkdir creates a new directory with the specified name.
+// TODO: Add support for permision bits.
 func main() {
 	if len(os.Args) <= 1 {
 		fmt.Println("Usage: mkdir <dir>")
