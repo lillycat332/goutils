@@ -1,7 +1,7 @@
 BUILD_DIR := bin
 CGO_CFLAGS := -Wno-nullability-completeness -Wno-expansion-to-defined
 export CGO_CFLAGS
-all: cat echo ls
+all: cat echo ls mkdir
 
 $(BUILD_DIR):
 				@echo "Folder $(BUILD_DIR) does not exist, creating it..."
@@ -14,6 +14,10 @@ cat: |$(BUILD_DIR)
 echo: |$(BUILD_DIR)
 				@echo "Building echo..."
 				@go build -o bin/echo ./cmd/echo/echo.go
+
+mkdir: |$(BUILD_DIR)
+				@echo "Building mkdir..."
+				@go build -o bin/mkdir ./cmd/mkdir/mkdir.go
 
 ls: |$(BUILD_DIR)
 				@echo "Building ls..."
