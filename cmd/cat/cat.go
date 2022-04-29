@@ -23,8 +23,31 @@ func readStream(r io.Reader) ([]byte, error) {
 func main() {
 	var data []byte
 	var err error
+	var file string
 
-	data, err = readStream(os.Stdin)
+	if os.Args[1] != "" {
+		for i := 1; i < len(os.Args); i++ {
+			file = os.Args[i]
+			tmp, err := ioutil.ReadFile(file)
+			if err != nil {
+				fmt.Printf("cat: %s", err)
+				os.Exit(1)
+			}
+			data = append(data, tmp...)
+		}
+
+		if err != nil {
+			fmt.Printf("cat: %s", err)
+			os.Exit(1)
+		}
+	} else {
+		data, err = readStream(os.Stdin)
+		if err != nil {
+			fmt.Printf("cat: %s", err)
+			os.Exit(1)
+		}
+	}
+
 	if err != nil {
 		fmt.Printf("head: %s", err)
 		os.Exit(1)
