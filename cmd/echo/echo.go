@@ -6,6 +6,7 @@ import (
 	"strings"
 )
 
+// echo writes its arguments to stdout.
 func main() {
 	if len(os.Args) < 1 {
 		os.Exit(1)
