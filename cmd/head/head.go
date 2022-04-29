@@ -40,17 +40,20 @@ func main() {
 	if *file == "" {
 		data, err = readStream(os.Stdin)
 		if err != nil {
-			panic(err)
+			fmt.Printf("head: %s", err)
+			os.Exit(1)
 		}
 	} else {
 		data, err = ioutil.ReadFile(*file)
 		if err != nil {
-			panic(err)
+			fmt.Printf("head: %s", err)
+			os.Exit(1)
 		}
 	}
 
 	if err != nil {
-		panic(err)
+		fmt.Printf("head: %s", err)
+		os.Exit(1)
 	}
 
 	for i := 0; i < *lc; i++ {

@@ -26,7 +26,8 @@ func main() {
 
 	data, err = readStream(os.Stdin)
 	if err != nil {
-		panic(err)
+		fmt.Printf("head: %s", err)
+		os.Exit(1)
 	}
 
 	fmt.Print(string(data))
