@@ -22,8 +22,9 @@ func readStream(r io.Reader) ([]byte, error) {
 // Head reads from a stream until EOF and returns the first n bytes of the stream.
 func main() {
 	var data []byte
-	var lc = flag.Int("c", 10, "number of bytes to print")
+	var lc = flag.Int("b", 10, "number of bytes to print")
 	var err error
+	flag.Parse()
 
 	data, err = readStream(os.Stdin)
 	if err != nil {
