@@ -1,11 +1,16 @@
 package main
 
-import "os/user"
+import (
+	"fmt"
+	"os"
+	"os/user"
+)
 
 func main() {
 	u, err := user.Current()
 	if err != nil {
-		panic(err)
+		fmt.Printf("whoami: %s", err)
+		os.Exit(1)
 	}
 	print(u.Username)
 }

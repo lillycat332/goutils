@@ -24,6 +24,7 @@ func main() {
 		os.Exit(1)
 	}
 
+	// Iterate&print over files, print them with "/" at the end to indicate a folder.
 	for _, file := range files {
 		if file.IsDir() {
 			fmt.Print(file.Name(), "/", "\n")

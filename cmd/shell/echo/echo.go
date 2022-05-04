@@ -11,8 +11,9 @@ import (
 // usage: echo [string]
 func main() {
 	if len(os.Args) < 1 {
-		os.Exit(1)
+		os.Exit(0)
 	} else {
+		// Echo the arguments joined together
 		fmt.Print(strings.Join(os.Args[1:], " "))
 	}
 }
